@@ -8,16 +8,15 @@ import {
 import Home from './Home'
 import Page from './Page'
 
-
 export default function App() {
     return (
         <Router>
             <Switch>
-                <Route path="/">
-                    <Home />
-                </Route>
                 <Route path="/page">
                     <Page />
+                </Route>
+                <Route path="/">
+                    <Home />
                 </Route>
             </Switch>
         </Router>
