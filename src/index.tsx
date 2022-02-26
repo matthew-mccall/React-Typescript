@@ -1,5 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route
+} from "react-router-dom";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const Home = React.lazy(() => import('./Home'))
+const Page = React.lazy(() => import('./Page'))
+
+ReactDOM.render(
+    <Router>
+        <Routes>
+            <Route path="/page" element={
+                <React.Suspense fallback={<p>Loading...</p>}>
+                    <Page />
+                </React.Suspense>
+            } />
+            <Route path="/" element={
+                <React.Suspense fallback={<p>Loading...</p>}>
+                    <Home />
+                </React.Suspense>
+            } />
+        </Routes>
+    </Router>, document.getElementById("root"));
